@@ -18,11 +18,14 @@ class TaxableIncome:
         self.bonus = bonus
         self.num_children = num_children
         self.child_education_allowance = child_education_allowance
-
+    
     def calculate(self):
-         # Calculate taxable income, ensuring it's not negative
-        taxable_income = self.salary + self.bonus - self.deductions - self.child_education_allowance
-        return max(taxable_income, 0)  # Ensure taxable income is not negative
+        if self.num_children > 0:
+            # Calculate taxable income, ensuring it's not negative
+            taxable_income=self.salary + self.bonus - self.deductions - self.child_education_allowance * self.num_children
+            return max(taxable_income,0)
+        else:
+            return self.salary + self.bonus- self.deductions
 
 # Class to calculate personal income tax
 class PersonalIncomeTax:
@@ -34,11 +37,14 @@ class PersonalIncomeTax:
         self.organization_type = organization_type
         self.num_children = num_children
         self.child_education_allowance = child_education_allowance
+        self.deductions = deductions
+        self.bonus = bonus
 
     def calculate(self):
         # Check if the person is under 18, not liable to pay tax
         if self.age < 18:
             return "Not liable to pay tax as you are under age."
+            exit()  # Exit the program if age is below 18
 
         # Initialize tax to 0
         tax = 0.0
@@ -80,6 +86,11 @@ class PersonalIncomeTax:
 # Get employee individual information
 name = input("Enter your name: ")
 age = int(input(f"Your age: "))
+
+if age < 18:
+    print("Not liable to pay tax as you are under age.")
+    exit()
+
 employment_position = int(input(f"Enter your employment position, 1=Regular,2=Contract: "))
 organization_type = int(input(f"Enter your organization type (1=Government, 2=Private,3=Corporate): "))
 salary = float(input(f"Enter your salary per annual: "))
@@ -89,7 +100,7 @@ bonus = float(input("Enter your bonus per annual: "))
 #To qualify for child(ren) education allowance, individual must be married and have school going child(ren)
 status = input("Enter your status (Single=1 or Married=2): ")
 
-if status == "Married":
+if status == "2":
     num_children = int(input("Enter the number of children goingf to school: ")) #Only school going ones
     #.Education allowance up to a max of Nu. 350,000 per child.
     child_education_allowance = float(input("Enter the child education allowance per child max 350000: "))
@@ -104,6 +115,3 @@ taxable_income = TaxableIncome(salary, deductions, bonus, num_children, child_ed
 personal_income_tax = PersonalIncomeTax(age, taxable_income, employment_position, organization_type, num_children, child_education_allowance)
 
 print(personal_income_tax.calculate())
-
-
-

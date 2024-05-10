@@ -64,3 +64,15 @@ Surcharge at the rate of 10% shall be levied on (PIT)	Personal Income Tax, if th
 #Formula: Personal Income Tax= Taxable income from salary -(NPPF+GIS+Tax deductions for children education+ allowances)
 
 #References
+Corey Schafer (Director). (2016, June 20). Python OOP Tutorial 1: Classes and Instances. 
+   https://www.youtube.com/watch?v=ZDa-Z5JzLYM
+
+freeCodeCamp.org (Director). (2021, October 13). Object Oriented Programming with Python—
+   Full Course for Beginners. https://www.youtube.com/watch?v=Ej_02ICOIgs
+
+Ministry of Finance and Economics, D. of R. and C. (n.d.). What is PIT? Retrieved May 10, 
+   2024, from http://portal.drc.gov.bt/drc/node/25
+
+Royal Government of Bhutan, M. O. F. (n.d.). Acts & Policy | Ministry of Finance, Royal 
+   Government of Bhutan. Retrieved May 10, 2024, from
+   https://www.mof.gov.bt/publications/acts-policy/
